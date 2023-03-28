@@ -28,7 +28,7 @@ try:
     ]
     a = '''INSERT INTO users(email, password, firstname, lastname, patronymic, sex, avatar, "dateBirthDay") VALUES '''
     for i in range(5):
-        a += f"('{val[i][4]}', '{val[i][5]}', '{val[i][0]}', '{val[i][1]}', '{val[i][2]}', {val[i][6]}, '{val[i][3]}', '{val[i][7]}'), "
+        a += f"('{val[i][4]}', '{val[i][5]}', '{val[i][1]}', '{val[i][0]}', '{val[i][2]}', {val[i][6]}, '{val[i][3]}', '{val[i][7]}'), "
     a = a.rstrip(', ')
     cursor.execute(a)
 
@@ -78,7 +78,7 @@ try:
     val = [
         # (id, idCourse, idUser, title, description, datetime, duration, isComplete, file, commentFile)
         [0] * 10 + [1] * 10 + [2] * 10 + [3] * 10 + [4] * 10 + [5] * 10 + [6] * 10 + [7] * 10 + [8] * 10 + [9] * 10,
-        ([0] * 5 + [1] * 5 + [2] * 5 + [3] * 5 + [4] * 5) * 4,
+        [6] * 50 + [7] * 50,
         [f'Урок {n} №{i}.' for n in ['python', 'SQL', 'Алгоритмы и структуры данных',
                                               'Data Scientist', 'Веб-дизайн', 'Android', 'PR',
                                               'Веб-вёрстке', 'Введение в программирование', 'iOS'] for i in range(1, 11)],
@@ -93,7 +93,7 @@ try:
     ]
     a = 'INSERT INTO lessons("idCourse", "idUser", title, description, datetime, duration, "isComplete", file, "commentFile") VALUES '
     for i in range(100):
-        a += f"({val[0][i] + 1}, {val[1][i] + 1}, '{val[2][i]}', '{val[3][i]}', {val[4][i]}, {val[5][i]}, {val[6][i]}, {val[7][i]}, {val[8][i]}), "
+        a += f"({val[0][i] + 1}, {val[1][i]}, '{val[2][i]}', '{val[3][i]}', {val[4][i]}, {val[5][i]}, {val[6][i]}, {val[7][i]}, {val[8][i]}), "
     a = a.rstrip(', ')
     print(a)
 
@@ -207,7 +207,7 @@ try:
     ]
     a = 'INSERT INTO soldCourses("idUser", "idCourse", "startEducation") VALUES '
     for i in range(10):
-        a += f"({int(val[i][1]) + 1}, {int(val[i][0]) + 1}, {val[i][2]}), "
+        a += f"({int(val[i][0]) + 1}, {int(val[i][1]) + 1}, {val[i][2]}), "
     a = a.rstrip(', ')
 
     cursor.execute(a)
